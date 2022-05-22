@@ -10,6 +10,8 @@
     "nuxt": "3.0.0-rc.1"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.1.9"
+    "@pinia/nuxt": "^0.1.9",
+    "vee-validate": "^4.5.11",
+    "yup": "^0.32.11"
   }
 }
