@@ -6,5 +6,8 @@
 </template>
 
 <script setup>
- 
+import {authStore} from '@/stores/auth'
+
+const userStore = authStore()
+
 </script>

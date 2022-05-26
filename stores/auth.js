@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import Cookies from 'js-cookie'
 
 export const authStore = defineStore('auth', {
     state: () => {
@@ -23,6 +24,8 @@ export const authStore = defineStore('auth', {
 
                 this.token = token
                 localStorage.setItem('jwt', token)
+                Cookies.set('jwt', token, {sameSite: 'None', secure: true})
+
 
                 //response.idToken
             } catch (error) {
@@ -33,7 +36,28 @@ export const authStore = defineStore('auth', {
         logoutUser() {
             this.token = null
             localStorage.removeItem('jwt')
-        }
+            Cookies.remove('jwt')
+            
+        },
+
+        initAuth(req) {
+            // this.token = Cookies.get('jwt')
+            let token
+            if(req) {
+                const jwtToken = req.find(t => t.trim().startsWith('jwt='))
+
+                if(jwtToken) {
+                    token = jwtToken.split('=')[1]
+                    this.token = token
+                } else {
+                    return false
+                }
+
+            } else {
+                token = localStorage.getItem('jwt')
+                this.token = token
+            }
+        },
 
     }
 })

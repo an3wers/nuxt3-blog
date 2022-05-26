@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.1.9",
+    "js-cookie": "^3.0.1",
     "vee-validate": "^4.5.11",
     "yup": "^0.32.11"
   }

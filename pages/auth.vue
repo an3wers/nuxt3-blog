@@ -40,9 +40,13 @@
 <script setup>
 import { useForm, useField } from "vee-validate";
 import * as yup from "yup";
+
 import {authStore} from '@/stores/auth'
 
+import {useRouter} from 'vue-router'
+
 const userStore = authStore()
+const router = useRouter()
 
 const { handleSubmit } = useForm();
 
@@ -51,10 +55,11 @@ const {value: email, errorMessage: emailError, handleBlur: emailBlur} = useField
 const {value: password, errorMessage: passError, handleBlur: passBlur} = useField('password', yup.string().required().min(6))
 
 // Авторизация пользователя
-const onSubmit = handleSubmit(values => {
-      console.log('Форма отправлена')
-        userStore.authUser(values)
-
+const onSubmit = handleSubmit( async(values) => {
+        await userStore.authUser(values)
+          .then(() => {
+            router.push('/')
+          })
     } );
 
 </script>

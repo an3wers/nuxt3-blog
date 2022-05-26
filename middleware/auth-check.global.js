@@ -1,12 +1,13 @@
+import {authStore} from '../stores/auth'
+
 export default defineNuxtRouteMiddleware((to) => {
-    
-    console.log('TO', to.meta) // object
+    const {ssrContext} = useNuxtApp()
+    const storeAuth = authStore()
 
-    // if(to.fullPath.includes('admin')) {
-    //   return '/auth'
-    // }
+    if (process.client) {
+        storeAuth.initAuth(null)
+    } else {
+        storeAuth.initAuth(ssrContext.req.rawHeaders)
+    }
 
-    console.log('Heading to', to.path, 'but I think we should go somewhere else...')
-    
-   
   })
