@@ -1,5 +1,3 @@
-import { defineNuxtConfig } from "nuxt";
-
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   app: {
@@ -11,12 +9,13 @@ export default defineNuxtConfig({
         },
       ],
     },
+    pageTransition: true
   },
 
   modules: [
-      ["@pinia/nuxt", { disableVuex: true }],
-        //"vee-validate",
-         //"yup"
-        ],
+    "@pinia/nuxt",
+    //"vee-validate",
+    //"yup"
+  ],
   css: [],
 });

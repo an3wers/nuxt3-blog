@@ -54,7 +54,9 @@ export const authStore = defineStore('auth', {
                 }
 
             } else {
-                token = localStorage.getItem('jwt')
+                if(process.client) {
+                    token = localStorage.getItem('jwt')
+                }
                 this.token = token
             }
         },

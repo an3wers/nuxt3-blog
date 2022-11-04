@@ -7,10 +7,10 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.1"
+    "nuxt": "3.0.0-rc.12"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.1.9",
+    "@pinia/nuxt": "^0.4.3",
     "js-cookie": "^3.0.1",
     "vee-validate": "^4.5.11",
     "yup": "^0.32.11"
